@@ -1,0 +1,52 @@
+// กำหนดโทนสีเขียว KU
+$ku-green: #006400;
+$ku-dark-green: #004b23;
+$ku-light-green: #e6f4ea;
+
+.container {
+  max-width: 600px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-ku-green {
+  color: $ku-green;
+}
+
+.text-ku-dark {
+  color: $ku-dark-green;
+}
+
+.list-group-item {
+  background-color: #f9f9f9;
+  border: 1px solid $ku-green;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.list-group-item:hover {
+  background-color: $ku-light-green;
+}
+
+.details {
+  background-color: $ku-light-green;
+  border-color: $ku-green;
+}
+
+.arrow-up,
+.arrow-down {
+  font-size: 1.2rem;
+  color: $ku-green;
+  transition: transform 0.2s;
+}
+
+.arrow-up {
+  transform: rotate(0deg);
+}
+
+.arrow-down {
+  transform: rotate(180deg);
+}

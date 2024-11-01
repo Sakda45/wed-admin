@@ -1,0 +1,75 @@
+<div class="container mt-4">
+    <h2 class="text-ku-green">Zone List</h2>
+  
+    <!-- ปุ่มเพิ่มโซน -->
+    <button class="btn btn-success mb-3" (click)="toggleForm()">
+      {{ showForm ? 'Cancel' : 'Add Zone' }}
+    </button>
+  
+    <!-- ฟอร์มเพิ่มโซน -->
+    <div *ngIf="showForm" class="card card-body mb-4">
+      <h4>Add New Zone</h4>
+      <form (ngSubmit)="addZone()">
+        <div class="mb-3">
+          <label>Zone Name:</label>
+          <input type="text" class="form-control" [(ngModel)]="newZone.zone_name" name="zone_name" required>
+        </div>
+        <div class="mb-3">
+          <label>Description:</label>
+          <input type="text" class="form-control" [(ngModel)]="newZone.zone_description" name="zone_description" required>
+        </div>
+        <div class="mb-3">
+          <label>Number of Booths:</label>
+          <input type="number" class="form-control" [(ngModel)]="newZone.num_booths" name="num_booths" required>
+        </div>
+        <div class="mb-3">
+          <label>Event:</label>
+          <select class="form-control" [(ngModel)]="newZone.event_id" name="event_id" required>
+            <option *ngFor="let event of events" [value]="event.event_id">
+              {{ event.event_name }}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    
+  
+    <!-- แสดงรายการโซน -->
+    <ul class="list-group">
+        <li *ngFor="let zone of zoneData" class="list-group-item">
+          <!-- Section สำหรับแสดงข้อมูลโซน -->
+          <div *ngIf="!isEditing(zone.id)" (click)="goToBoothList(zone.id , zone.zone_name)" style="cursor: pointer;">
+            <h5 style="color: #007bff;">
+              <strong>Zone Name:</strong> {{ zone.zone_name }}
+            </h5>
+            <p><strong>Description:</strong> {{ zone.zone_description }}</p>
+            <p><strong>Number of Booths:</strong> {{ zone.num_booths }}</p>
+            <button class="btn btn-primary btn-sm mt-2" (click)="startEdit(zone); $event.stopPropagation()">Edit</button>
+            <button class="btn btn-danger btn-sm mt-2" (click)="deleteZone(zone.zone_name); $event.stopPropagation()">Delete</button>
+          </div>
+          
+      
+          <!-- Section ฟอร์มแก้ไขข้อมูล -->
+          <div *ngIf="isEditing(zone.id)" class="card card-body mt-2">
+            <label><strong>Zone Name:</strong></label>
+            <input [(ngModel)]="zone.zone_name" class="form-control mb-2" />
+      
+            <label><strong>Description:</strong></label>
+            <input [(ngModel)]="zone.zone_description" class="form-control mb-2" />
+      
+            <label><strong>Number of Booths:</strong></label>
+            <input type="number" [(ngModel)]="zone.num_booths" class="form-control mb-2" />
+      
+            <button class="btn btn-success btn-sm mt-2" (click)="saveEdit(zone)">Save</button>
+            <button class="btn btn-secondary btn-sm mt-2" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </li>
+      </ul>
+      
+  </div>
+  
+  <ng-template #noData>
+    <p>Loading zone data...</p>
+  </ng-template>
+  

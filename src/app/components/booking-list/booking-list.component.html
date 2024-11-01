@@ -1,0 +1,84 @@
+<div class="container mt-4">
+    <h2 *ngIf="viewMode === 'bookings'">Pending Payment Users</h2>
+    <h2 *ngIf="viewMode === 'users'">Pending Users</h2>
+    <h2 *ngIf="viewMode === 'confirmed'">Confirmed Users</h2>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown mb-3">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ viewMode === 'bookings' ? 'Pending Payment Bookings' : viewMode === 'users' ? 'Pending Payment Users' : 'Confirmed Bookings' }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" (click)="toggleView('bookings')">Pending Payment Bookings</a></li>
+            <li><a class="dropdown-item" (click)="toggleView('users')">Pending Payment Users</a></li>
+            <li><a class="dropdown-item" (click)="toggleView('confirmed')">Confirmed Bookings</a></li>
+        </ul>
+    </div>
+
+    <!-- Bookings List -->
+    <div *ngIf="viewMode === 'bookings'">
+        <ul *ngIf="bookings.length > 0; else noBookings" class="list-group">
+            <li *ngFor="let booking of bookings" class="list-group-item" (click)="toggleBookingDetails(booking.id)" style="cursor: pointer;">
+                <strong>Name:</strong> {{ booking.name }} {{ booking.lastname }}
+                
+                <!-- Show details when list item is clicked -->
+                <div *ngIf="selectedBookingId === booking.id" class="mt-2">
+                    <p><strong>Phone:</strong> {{ booking.phone }}</p>
+                    <p><strong>Email:</strong> {{ booking.email }}</p>
+                    <p><strong>Booth Name:</strong> {{ booking.booth_name }}</p>
+                    <p><strong>Status:</strong> {{ booking.status }}</p>
+                    <p><strong>Zone Name:</strong> {{ booking.zone_name }}</p>
+                    
+                    <!-- Confirm Button -->
+                    <button class="btn btn-success mt-2" (click)="confirmBooking(booking.booking_id, $event)">ยืนยัน</button>
+                </div>
+            </li>
+        </ul>
+        <ng-template #noBookings>
+            <p>No pending payment bookings found.</p>
+        </ng-template>
+    </div>
+    
+
+    <!-- Users List -->
+    <div *ngIf="viewMode === 'users'">
+        <ul *ngIf="users.length > 0; else noUsers" class="list-group">
+            <li *ngFor="let user of users" class="list-group-item" (click)="toggleUserDetails(user.id)" style="cursor: pointer;">
+                <strong>Name:</strong> {{ user.name }} {{ user.lastname }}
+
+                <!-- Show details when list item is clicked -->
+                <div *ngIf="selectedUserId === user.id" class="mt-2">
+                    <p><strong>Phone:</strong> {{ user.phone }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Booth Name:</strong> {{ user.booth_name }}</p>
+                    <p><strong>Status:</strong> {{ user.status }}</p>
+                    <p><strong>Zone Name:</strong> {{ user.zone_name }}</p>
+                </div>
+            </li>
+        </ul>
+        <ng-template #noUsers>
+            <p>No pending payment users found.</p>
+        </ng-template>
+    </div>
+
+    <!-- Confirmed Bookings List -->
+    <div *ngIf="viewMode === 'confirmed'">
+        <ul *ngIf="confirmedBookings.length > 0; else noConfirmedBookings" class="list-group">
+            <li *ngFor="let booking of confirmedBookings" class="list-group-item" (click)="toggleBookingDetails(booking.id)" style="cursor: pointer;">
+                <strong>Name:</strong> {{ booking.fullname }}
+
+                <!-- Show details when list item is clicked -->
+                <div *ngIf="selectedBookingId === booking.id" class="mt-2">
+                    <p><strong>Phone:</strong> {{ booking.phone }}</p>
+                    <p><strong>Email:</strong> {{ booking.email }}</p>
+                    <p><strong>Booth Name:</strong> {{ booking.booth_name }}</p>
+                    <p><strong>Status:</strong> {{ booking.status }}</p>
+                    <p><strong>Zone Name:</strong> {{ booking.zone_name }}</p>
+                </div>
+            </li>
+        </ul>
+        <ng-template #noConfirmedBookings>
+            <p>No confirmed bookings found.</p>
+        </ng-template>
+    </div>
+</div>

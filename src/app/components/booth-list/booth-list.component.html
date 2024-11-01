@@ -1,0 +1,86 @@
+<div class="container mt-4">
+    <button class="btn btn-secondary mb-3" (click)="goBack()">Back to Zone List</button>
+    <h2>Booth List for Zone {{ zoneName }}</h2>
+
+    <!-- ปุ่มเพิ่มบูธ -->
+    <button class="btn btn-success mb-3" (click)="toggleAddBoothForm()">
+      {{ showAddBoothForm ? 'Cancel' : 'Add Booth' }}
+    </button>
+
+    <!-- ฟอร์มเพิ่มบูธ -->
+    <div *ngIf="showAddBoothForm" class="card card-body mb-4">
+      <h4>Add New Booth</h4>
+      <form (ngSubmit)="addBooth()">
+        <div class="mb-3">
+          <label>Booth Name:</label>
+          <input type="text" class="form-control" [(ngModel)]="newBooth.booth_name" name="booth_name" required>
+        </div>
+        <div class="mb-3">
+          <label>Booth Size:</label>
+          <input type="text" class="form-control" [(ngModel)]="newBooth.booth_size" name="booth_size" required>
+        </div>
+        <div class="mb-3">
+          <label>Price:</label>
+          <input type="number" class="form-control" [(ngModel)]="newBooth.price" name="price" required>
+        </div>
+        <div class="mb-3">
+          <label>Image URL:</label>
+          <input type="text" class="form-control" [(ngModel)]="newBooth.image_url" name="image_url" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <!-- แสดงรายการบูธ -->
+    <ul *ngIf="booths && booths.length > 0; else noData" class="list-group">
+      <li *ngFor="let booth of booths" class="list-group-item" (click)="toggleBoothDetails(booth.id)" style="cursor: pointer;">
+        <h5><strong>Booth Name:</strong> {{ booth.booth_name }}</h5>
+        
+        <!-- แสดงรายละเอียดบูธเมื่อคลิก -->
+        <div *ngIf="expandedBoothId === booth.id" class="mt-2">
+          <p><strong>Size:</strong> {{ booth.booth_size }}</p>
+          <p><strong>Status:</strong> {{ booth.status }}</p>
+          <p><strong>Price:</strong> {{ booth.price | currency:'USD' }}</p>
+          <p><strong>Image:</strong></p>
+          <img [src]="booth.image_url" alt="{{ booth.booth_name }}" class="img-fluid mb-2" style="max-width: 200px; border: 1px solid #ddd; border-radius: 4px;">
+          
+          <!-- ปุ่มแก้ไขและลบบูธ -->
+          <button class="btn btn-warning btn-sm mt-2" (click)="startEdit(booth); $event.stopPropagation();">Edit</button>
+          <button class="btn btn-danger btn-sm mt-2" (click)="deleteBooth(booth.booth_name); $event.stopPropagation();">Delete</button>
+        </div>
+
+        <!-- ฟอร์มแก้ไขบูธเมื่อกด Edit -->
+        <div *ngIf="editingBooth && editingBooth.id === booth.id" class="mt-2">
+          <h5>Edit Booth</h5>
+          <form (ngSubmit)="updateBooth()">
+            <div class="mb-3">
+              <label>Booth Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="editingBooth.booth_name" name="edit_booth_name" required>
+            </div>
+            <div class="mb-3">
+              <label>Booth Size:</label>
+              <input type="text" class="form-control" [(ngModel)]="editingBooth.booth_size" name="edit_booth_size" required>
+            </div>
+            <div class="mb-3">
+              <label>Status:</label>
+              <input type="text" class="form-control" [(ngModel)]="editingBooth.status" name="edit_status" required>
+            </div>
+            <div class="mb-3">
+              <label>Price:</label>
+              <input type="number" class="form-control" [(ngModel)]="editingBooth.price" name="edit_price" required>
+            </div>
+            <div class="mb-3">
+              <label>Image URL:</label>
+              <input type="text" class="form-control" [(ngModel)]="editingBooth.image_url" name="edit_image_url" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-sm">Save</button>
+            <button type="button" class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+    
+    <ng-template #noData>
+      <p>Loading booth data...</p>
+    </ng-template>
+</div>

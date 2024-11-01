@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <button class="btn btn-secondary mb-3" routerLink="/bookings">Back to Pending Payment Bookings</button>
+  
+    <h2>Pending Payment Users</h2>
+  
+    <!-- แสดงรายการผู้ใช้ที่ยังไม่ได้ชำระเงิน -->
+    <ul *ngIf="users.length > 0; else noData" class="list-group">
+      <li *ngFor="let user of users" class="list-group-item">
+        <h5 (click)="toggleUserDetails(user)" style="cursor: pointer;">
+          <strong>Name:</strong> {{ user.name }} {{ user.lastname }}
+        </h5>
+  
+        <!-- แสดงรายละเอียดเมื่อคลิกที่ชื่อ โดยใช้ user.showDetails -->
+        <div *ngIf="user.showDetails" class="mt-2">
+          <p><strong>ID:</strong> {{ user.id }}</p>
+          <p><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Booth Name:</strong> {{ user.booth_name }}</p>
+          <p><strong>Status:</strong> {{ user.status }}</p>
+          <p><strong>Zone Name:</strong> {{ user.zone_name }}</p>
+        </div>
+      </li>
+    </ul>
+  
+    <!-- ข้อความเมื่อไม่มีข้อมูลการจอง -->
+    <ng-template #noData>
+      <p>No pending payment users found.</p>
+    </ng-template>
+  </div>
+  
