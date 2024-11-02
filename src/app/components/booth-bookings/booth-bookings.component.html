@@ -1,18 +1,17 @@
 <div class="container mt-4">
-    <h2>Booked Booths</h2>
+    <h2 class="text-ku-green">Booked Booths</h2>
   
     <ul *ngIf="boothBookings.length > 0; else noData" class="list-group">
-      <li *ngFor="let booking of boothBookings" class="list-group-item">
-        <p><strong>Booth Name:</strong> {{ booking.booth_name }}</p>
-        <p><strong>Booked by:</strong> {{ booking.fullname }} {{ booking.user_lastname }}</p>
-        <p><strong>Zone name:</strong> {{ booking.zone_name }}</p>
-        <p><strong>Price:</strong> {{ booking.price }}</p>
-        <p><strong>Status:</strong> {{ booking.status }}</p>
-      </li>
+        <li *ngFor="let booking of boothBookings" class="list-group-item booked-booth-item">
+            <p><strong>Booth Name:</strong> {{ booking.booth_name }}</p>
+            <p><strong>Booked by:</strong> {{ booking.fullname }} {{ booking.user_lastname }}</p>
+            <p><strong>Zone name:</strong> {{ booking.zone_name }}</p>
+            <p><strong>Price:</strong> {{ booking.price | currency:'฿' }}</p>
+            <p><strong>Status:</strong> {{ booking.status }}</p>
+        </li>
     </ul>
   
     <ng-template #noData>
-      <p>No booked booths found.</p>
+        <p class="text-danger">No booked booths found.</p>
     </ng-template>
-  </div>
-  
+</div>

@@ -1,0 +1,117 @@
+/* สีเขียว KU */
+.text-ku-green {
+    color: #006400; /* สีเขียวเข้ม KU */
+}
+
+.btn-ku-primary {
+    background-color: #006400;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-ku-confirm {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-ku-edit {
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-ku-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    border: none;
+}
+
+/* การตกแต่งบัตร (Card) สำหรับ Add และ Edit */
+.card-ku {
+    background-color: #90EE90;
+    border: 1px solid #006400;
+    border-radius: 8px;
+}
+
+.card-ku-header {
+    background-color: #006400;
+    color: #ffffff;
+    padding: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* สไตล์เฉพาะสำหรับ Edit Form */
+.edit-form {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.edit-form .card-ku-header {
+    background-color: #006400;
+    color: #ffffff;
+}
+
+.list-group-item {
+    border: none;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    padding: 10px 15px;
+}
+
+.bg-ku-dark {
+    background-color: #006400;
+}
+
+.list-group-item h5, .list-group-item p {
+    margin: 0;
+}
+
+/* สีเขียว KU */
+.text-ku-green {
+    color: #006400;
+}
+
+/* ปุ่ม KU */
+.btn-ku-add {
+    background-color: #006400;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-ku-add:hover {
+    background-color: #004d00; /* สีเขียวเข้มขึ้นเมื่อ hover */
+}
+
+.btn-ku-confirm {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.card-ku {
+    background-color: #f0fff0; /* สีเขียวอ่อน */
+    border: 1px solid #006400;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card-ku-header {
+    background-color: #006400;
+    color: #ffffff;
+    padding: 8px;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}

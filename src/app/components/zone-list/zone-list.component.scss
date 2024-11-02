@@ -1,21 +1,90 @@
+// สีธีม KU และสีอื่น ๆ
+$ku-green: #228B22;
+$ku-dark-green: #006400;
+$ku-light-green: #f0f9f0;
+$ku-white: #ffffff;
+$edit-blue: #007bff;
+
+// สไตล์สำหรับ container และหัวข้อ
 .container {
-    max-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-ku-green {
+  color: $ku-green;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+// ปุ่มเพิ่มโซน
+.btn-success, .btn-primary {
+  background-color: $ku-green;
+  border-color: $ku-green;
+  &:hover {
+    background-color: darken($ku-green, 10%);
+    border-color: darken($ku-green, 10%);
   }
-  
-  h2 {
-    color: #006400;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+}
+
+// ฟอร์มสำหรับเพิ่มโซน
+.card-body {
+  background-color: $ku-light-green;
+  border: 1px solid $ku-dark-green;
+  border-radius: 8px;
+}
+
+form label {
+  font-weight: 600;
+  color: $ku-dark-green;
+}
+
+// สไตล์รายการโซน
+.list-group-item {
+  background-color: $ku-green;
+  color: $ku-white;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: darken($ku-green, 10%);
   }
-  
-  .list-group-item {
-    background-color: #f9f9f9;
-    border: 1px solid #006400;
-    margin-bottom: 0.5rem;
-    transition: background-color 0.3s;
+
+  h5 {
+    color: $ku-white;  // ชื่อโซนเป็นสีขาว
   }
-  
-  .list-group-item:hover {
-    background-color: #e6f4ea;
+
+  // ปุ่ม Edit และ Delete
+  .btn-primary {
+    background-color: $edit-blue;  // สีฟ้าสำหรับปุ่ม Edit
+    border-color: $edit-blue;
+    margin-right: 5px;
+    &:hover {
+      background-color: darken($edit-blue, 10%);
+      border-color: darken($edit-blue, 10%);
+    }
   }
-  
+
+  .btn-danger {
+    background-color: #cc0000;
+    border: none;
+    &:hover {
+      background-color: darken(#cc0000, 10%);
+    }
+  }
+}
+
+// ฟอร์มแก้ไขโซน
+.card-body.mt-2 {
+  background-color: $ku-light-green;
+  border: 1px solid $ku-dark-green;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+input, select {
+  border-radius: 5px;
+  margin-top: 5px;
+}

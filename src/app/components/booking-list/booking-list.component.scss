@@ -1,0 +1,59 @@
+/* ธีมสีเขียว KU สำหรับข้อความและพื้นหลัง */
+.text-ku-green {
+    color: #007b00; /* สีเขียว KU สำหรับหัวข้อ */
+}
+
+.bg-ku-dark {
+    background-color: #007b00; /* สีเขียวเข้มเป็นพื้นหลัง */
+    color: #ffffff; /* ข้อความสีขาว */
+    border: none;
+}
+
+/* ปุ่ม dropdown สีเขียว KU */
+.btn-ku-primary {
+    background-color: #007b00; /* สีเขียว KU สำหรับปุ่ม */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-ku-primary:hover {
+    background-color: #005c29; /* สีเขียวเข้มขึ้นเมื่อ hover */
+    color: #ffffff;
+}
+
+/* ปุ่ม confirm สีเขียวอ่อน */
+.btn-ku-confirm {
+    background-color: #00c853; /* สีเขียวอ่อน */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-ku-confirm:hover {
+    background-color: #009624; /* สีเข้มขึ้นเมื่อ hover */
+}
+
+/* รายการลิสต์ตกแต่ง */
+.list-group-item {
+    background-color: #007b00; /* สีพื้นหลังของรายการ */
+    color: #ffffff; /* ข้อความสีขาว */
+    border: 1px solid #005c29; /* สีขอบเข้ม */
+    margin-bottom: 10px; /* เพิ่มระยะห่าง */
+    border-radius: 8px; /* มุมโค้งมน */
+    padding: 15px;
+}
+
+/* ข้อความในรายละเอียด */
+.details p {
+    color: #ffffff; /* ข้อความสีขาวในรายละเอียด */
+    margin: 0;
+}
+
+/* การจัดระยะห่างและเงาเล็กน้อย */
+.list-group-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+}
+
+h2 {
+    text-align: center; /* จัดกึ่งกลาง */
+    font-weight: bold;
+}

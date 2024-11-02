@@ -1,9 +1,15 @@
-<div class="container">
-  <h2>Dashboard</h2>
-  <p>Welcome to the admin dashboard!</p>
-  <button class="btn btn-primary" routerLink="/users">View Users</button>
-  <button class="btn btn-primary" routerLink="/zones">View Zones</button>
-  <button class="btn btn-primary" routerLink="/events">View Events</button>
-  <button class="btn btn-primary" routerLink="/bookings">View Bookings</button>
-  <button class="btn btn-primary" routerLink="/booth-bookings">View Booked Booths</button> <!-- ปุ่มใหม่สำหรับการดูบูธที่ถูกจอง -->
+<div class="container mt-5">
+  <div class="dashboard-header text-center mb-4">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome to the admin dashboard!</p>
+  </div>
+
+  <!-- Button Group -->
+  <div class="button-group">
+    <button class="btn btn-ku" routerLink="/users">View Users</button>
+    <button class="btn btn-ku" routerLink="/zones">View Zones</button>
+    <button class="btn btn-ku" routerLink="/events">View Events</button>
+    <button class="btn btn-ku" routerLink="/bookings">View Bookings</button>
+    <button class="btn btn-ku" routerLink="/booth-bookings">View Booked Booths</button>
+  </div>
 </div>

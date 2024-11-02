@@ -1,0 +1,24 @@
+/* สีเขียว KU */
+.text-ku-green {
+    color: #006400; /* สีเขียว KU */
+}
+
+/* สไตล์สำหรับ Booked Booth Items */
+.booked-booth-item {
+    background-color: #006400; /* สีเขียว KU */
+    color: #ffffff; /* ตัวหนังสือสีขาว */
+    margin-bottom: 15px; /* ระยะห่างระหว่างรายการ */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #004d00;
+}
+
+.booked-booth-item p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* เพิ่มการ Hover */
+.booked-booth-item:hover {
+    background-color: #004d00; /* สีเขียวเข้มขึ้น */
+}

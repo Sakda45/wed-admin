@@ -12,9 +12,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class BoothListComponent implements OnInit {
-cancelEdit() {
-throw new Error('Method not implemented.');
-}
+
   booths: any[] = [];
   zoneId: string = '';
   zoneName: string = ''; 
@@ -104,6 +102,10 @@ throw new Error('Method not implemented.');
 
   startEdit(booth: any): void {
     this.editingBooth = { ...booth };
+  }
+
+  cancelEdit(): void {
+    this.editingBooth = null; // ปิดฟอร์มการแก้ไขโดยรีเซ็ต editingBooth
   }
 
   updateBooth(): void {

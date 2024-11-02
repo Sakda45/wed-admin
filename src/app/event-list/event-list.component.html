@@ -1,44 +1,16 @@
 <div class="container mt-4">
-    <h2>Event List</h2>
-  
-    <!-- ปุ่มเพิ่มอีเวนต์ -->
-    <button class="btn btn-success mb-3" (click)="toggleAddEventForm()">
-      {{ showAddEventForm ? 'Cancel' : 'Add Event' }}
-    </button>
-  
-    <!-- ฟอร์มเพิ่มอีเวนต์ใหม่ -->
-    <div *ngIf="showAddEventForm" class="card card-body mb-4">
-      <h4>Add New Event</h4>
-      <form (ngSubmit)="addEvent()">
-        <div class="mb-3">
-          <label>Event Name:</label>
-          <input type="text" class="form-control" [(ngModel)]="newEvent.event_name" name="event_name" required>
-        </div>
-        <div class="mb-3">
-          <label>Start Date:</label>
-          <input type="date" class="form-control" [(ngModel)]="newEvent.event_start_date" name="event_start_date" required>
-        </div>
-        <div class="mb-3">
-          <label>End Date:</label>
-          <input type="date" class="form-control" [(ngModel)]="newEvent.event_end_date" name="event_end_date" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  
-    <!-- แสดงรายการอีเวนต์ -->
-    <ul *ngIf="events.length > 0; else noData" class="list-group">
-      <li *ngFor="let event of events" class="list-group-item">
-        <div *ngIf="editingEventId !== event.event_id">
-          <h5><strong>Event Name:</strong> {{ event.event_name }}</h5>
-          <p><strong>Start Date:</strong> {{ event.event_start_date }}</p>
-          <p><strong>End Date:</strong> {{ event.event_end_date }}</p>
-          <button class="btn btn-primary btn-sm" (click)="startEdit(event)">Edit</button>
-        </div>
-  
-        <!-- ฟอร์มแก้ไขอีเวนต์ที่ปรากฏในรายการ -->
-        <div *ngIf="editingEventId === event.event_id" class="card card-body mt-2">
-          <form (ngSubmit)="updateEvent()">
+    <div class="container mt-4">
+        <h2 class="text-ku-green">Event List</h2>
+      
+        <!-- ปุ่มเพิ่มอีเวนต์ -->
+        <button class="btn btn-ku-add mb-3" (click)="toggleAddEventForm()">
+          {{ showAddEventForm ? 'Cancel' : 'Add Event' }}
+        </button>
+      
+        <!-- ฟอร์มเพิ่มอีเวนต์ใหม่ -->
+        <div *ngIf="showAddEventForm" class="card card-ku mb-4">
+          <h4 class="card-ku-header">Add New Event</h4>
+          <form (ngSubmit)="addEvent()">
             <div class="mb-3">
               <label>Event Name:</label>
               <input type="text" class="form-control" [(ngModel)]="newEvent.event_name" name="event_name" required>
@@ -51,15 +23,48 @@
               <label>End Date:</label>
               <input type="date" class="form-control" [(ngModel)]="newEvent.event_end_date" name="event_end_date" required>
             </div>
-            <button type="submit" class="btn btn-success btn-sm">Update</button>
-            <button type="button" class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+            <button type="submit" class="btn btn-ku-confirm">Submit</button>
           </form>
         </div>
-      </li>
+    </div>
+    
+
+    <!-- แสดงรายการอีเวนต์ -->
+    <ul *ngIf="events.length > 0; else noData" class="list-group">
+        <li *ngFor="let event of events" class="list-group-item bg-ku-dark text-white mb-2">
+            <div *ngIf="editingEventId !== event.event_id">
+                <h5 class="text-white"><strong>Event Name:</strong> {{ event.event_name }}</h5>
+                <p><strong>Start Date:</strong> {{ event.event_start_date }}</p>
+                <p><strong>End Date:</strong> {{ event.event_end_date }}</p>
+                <button class="btn btn-ku-edit btn-sm" (click)="startEdit(event)">Edit</button>
+            </div>
+
+            <!-- ฟอร์มแก้ไขอีเวนต์ที่ปรับปรุงสไตล์ -->
+            <div *ngIf="editingEventId === event.event_id" class="card edit-form">
+                <h5 class="card-ku-header">Edit Event</h5>
+                <form (ngSubmit)="updateEvent()">
+                    <div class="mb-3">
+                        <label>Event Name:</label>
+                        <input type="text" class="form-control" [(ngModel)]="newEvent.event_name" name="event_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Start Date:</label>
+                        <input type="date" class="form-control" [(ngModel)]="newEvent.event_start_date" name="event_start_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>End Date:</label>
+                        <input type="date" class="form-control" [(ngModel)]="newEvent.event_end_date" name="event_end_date" required>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-ku-confirm me-2">Update</button>
+                        <button type="button" class="btn btn-ku-secondary" (click)="cancelEdit()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </li>
     </ul>
-  
+
     <ng-template #noData>
-      <p>No events found.</p>
+        <p>No events found.</p>
     </ng-template>
-  </div>
-  
+</div>

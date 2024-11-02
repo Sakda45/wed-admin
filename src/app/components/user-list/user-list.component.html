@@ -1,27 +1,27 @@
-<div *ngIf="memberData && memberData.length > 0; else noData" class="container mt-4">
-    <h2 class="text-ku-green">Member List</h2>
-    <ul class="list-group">
-      <li *ngFor="let member of memberData" class="list-group-item">
-        <div (click)="toggleDetails(member.id)" class="d-flex justify-content-between align-items-center" style="cursor: pointer;">
-          <strong class="text-ku-dark">{{ member.name }} {{ member.lastname }}</strong>
-          <span *ngIf="selectedMemberId === member.id" class="arrow-up">&#9650;</span>
-          <span *ngIf="selectedMemberId !== member.id" class="arrow-down">&#9660;</span>
-        </div>
+<div *ngIf="memberData && memberData.length > 0; else noData" class="container mt-5">
+  <h2 class="text-center text-ku-green mb-4">Member List</h2>
   
-        <!-- แสดงรายละเอียดเฉพาะเมื่อคลิก -->
-        <div *ngIf="selectedMemberId === member.id" class="details mt-2 p-3 border rounded bg-ku-light">
-          <p><strong>ID:</strong> {{ member.id }}</p>
-          <p><strong>Prefix:</strong> {{ member.prefix }}</p>
-          <p><strong>Phone:</strong> {{ member.phone }}</p>
-          <p><strong>Email:</strong> {{ member.email }}</p>
-        </div>
-      </li>
-    </ul>
+  <ul class="list-group">
+    <li *ngFor="let member of memberData" class="list-group-item list-item-ku" (click)="toggleDetails(member.id)">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong>{{ member.name }} {{ member.lastname }}</strong>
+        <span *ngIf="selectedMemberId === member.id" class="arrow">&#9650;</span>
+        <span *ngIf="selectedMemberId !== member.id" class="arrow">&#9660;</span>
+      </div>
+
+      <!-- แสดงรายละเอียดเฉพาะเมื่อคลิก -->
+      <div *ngIf="selectedMemberId === member.id" class="details mt-2 p-3 border rounded">
+        <p><strong>ID:</strong> {{ member.id }}</p>
+        <p><strong>Prefix:</strong> {{ member.prefix }}</p>
+        <p><strong>Phone:</strong> {{ member.phone }}</p>
+        <p><strong>Email:</strong> {{ member.email }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noData>
+  <div class="container mt-4 text-center">
+    <p class="text-secondary">Loading data...</p>
   </div>
-  
-  <ng-template #noData>
-    <div class="container mt-4">
-      <p class="text-secondary">Loading data...</p>
-    </div>
-  </ng-template>
-  
+</ng-template>

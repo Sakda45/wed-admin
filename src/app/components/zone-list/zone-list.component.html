@@ -40,7 +40,7 @@
         <li *ngFor="let zone of zoneData" class="list-group-item">
           <!-- Section สำหรับแสดงข้อมูลโซน -->
           <div *ngIf="!isEditing(zone.id)" (click)="goToBoothList(zone.id , zone.zone_name)" style="cursor: pointer;">
-            <h5 style="color: #007bff;">
+            <h5 style="color: #ffffff;">
               <strong>Zone Name:</strong> {{ zone.zone_name }}
             </h5>
             <p><strong>Description:</strong> {{ zone.zone_description }}</p>

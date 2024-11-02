@@ -1,52 +1,43 @@
-// กำหนดโทนสีเขียว KU
-$ku-green: #006400;
-$ku-dark-green: #004b23;
-$ku-light-green: #e6f4ea;
+/* สีธีม KU */
+$ku-green: #228B22; /* เขียวสด KU */
+$ku-dark-green: #006400; /* เขียวเข้ม */
+$ku-light-green: #f0f9f0; /* เขียวอ่อน */
+$ku-white: #ffffff; /* สีขาว */
 
 .container {
   max-width: 600px;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0 auto;
 }
 
 .text-ku-green {
   color: $ku-green;
 }
 
-.text-ku-dark {
-  color: $ku-dark-green;
-}
-
 .list-group-item {
-  background-color: #f9f9f9;
-  border: 1px solid $ku-green;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s;
+  background-color: $ku-green; /* พื้นหลังเขียว */
+  color: $ku-white; /* ตัวอักษรสีขาว */
+  border: none;
+  padding: 1.2rem;
+  cursor: pointer;
+  margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างลิสต์ */
+  border-radius: 8px; /* ขอบมน */
 }
 
-.list-group-item:hover {
-  background-color: $ku-light-green;
+/* ปุ่มสำหรับสลับลูกศร */
+.arrow {
+  font-size: 1.2rem;
+  color: $ku-white; /* สีขาวสำหรับลูกศร */
 }
 
+/* รายละเอียดสมาชิก */
 .details {
   background-color: $ku-light-green;
-  border-color: $ku-green;
+  color: $ku-dark-green; /* ใช้สีเขียวเข้มสำหรับข้อความรายละเอียด */
+  padding: 1rem;
+  border-radius: 5px;
 }
 
-.arrow-up,
-.arrow-down {
-  font-size: 1.2rem;
-  color: $ku-green;
-  transition: transform 0.2s;
-}
-
-.arrow-up {
-  transform: rotate(0deg);
-}
-
-.arrow-down {
-  transform: rotate(180deg);
+/* Hover effect */
+.list-item-ku:hover {
+  background-color: darken($ku-green, 10%);
 }
