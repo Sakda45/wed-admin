@@ -43,7 +43,7 @@
               <p><strong>Price:</strong> {{ booth.price | currency:'฿' }}</p>
               <p><strong>Image:</strong></p>
               <img [src]="booth.image_url" alt="{{ booth.booth_name }}" class="img-fluid mb-2" style="max-width: 200px; border: 1px solid #ddd; border-radius: 4px;">
-              
+              <br />
               <!-- ปุ่มแก้ไขและลบบูธ -->
               <button class="btn btn-warning btn-sm mt-2" (click)="startEdit(booth); $event.stopPropagation();">Edit</button>
               <button class="btn btn-danger btn-sm mt-2" (click)="deleteBooth(booth.booth_name); $event.stopPropagation();">Delete</button>

@@ -84,6 +84,8 @@ export class EventListComponent implements OnInit {
       event_end_date: this.newEvent.event_end_date
     };
   
+    console.log("Updating event with data:", updatedEventData);  // เพิ่มบรรทัดนี้เพื่อตรวจสอบข้อมูลที่ส่ง
+
     this.http.put<any>(this.updateEventUrl, updatedEventData).subscribe({
       next: (response) => {
         if (response.status === 'success') {
